@@ -1,17 +1,17 @@
 # Ranorex ReportPortal Logger
 
-##Build:
+## Build:
  * Checkout
  * Open in VS2019
  * Setup references/dependencies
  * Build dll
  * Use dll in your project
  
-###Deps/References
+### Deps/References
 Nuget: ReportPortal.Client; ReportPortal.Shared
 Local: Ranorex.Core (ranorex Install Dir\bin)
 
-##Usage:
+## Usage:
  * Include dll as project reference;
  * In Program.cs in ranorex Project, add before TestSuiteRunner.Run();
 ```
