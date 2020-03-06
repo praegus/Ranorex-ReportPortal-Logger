@@ -1,27 +1,32 @@
 # Ranorex ReportPortal Logger
 
-## Build:
+Logs any Ranorex log data to RPusing the IReportlogger interface.
+Currently supports text logs and image attachments.
+
+
+## Building the thing:
  * Checkout
- * Open in VS2019
+ * Open in VS
  * Setup references/dependencies
- * Build dll
- * Use dll in your project
+ * Build solution dll
  
-### Deps/References
-Nuget: ReportPortal.Client; ReportPortal.Shared
-Local: Ranorex.Core (ranorex Install Dir\bin)
+### Dependencies/References
+ * Nuget: ReportPortal.Client; ReportPortal.Shared
+ * Local: Ranorex.Core (from Ranorex Install Dir\bin)
+
 
 ## Usage:
- * Include dll as project reference;
- * In Program.cs in ranorex Project, add before TestSuiteRunner.Run();
-```
+ * Reference dll in your Ranorex project
+ * In Program.cs in ranorex Project, add before the call to TestSuiteRunner.Run();
+ 
+```           
+Environment.SetEnvironmentVariable("rp.endpoint", "https://your-rp-endpoint");
+Environment.SetEnvironmentVariable("rp.uuid", "your-uuid-for-report-portal");
+Environment.SetEnvironmentVariable("rp.project", "Project name");
+Environment.SetEnvironmentVariable("rp.launch", "Launch name");
+                
 RanorexReportPortalLogger rpLogger = new RanorexReportPortalLogger();
 Report.AttachLogger(rpLogger);
 ```
 
-Settings:
- * System.Uri - rp_endpoint
- * string - rp_uuid
- * string - rp_launch
- * string - rp_project
- 
+### Happy Testing!

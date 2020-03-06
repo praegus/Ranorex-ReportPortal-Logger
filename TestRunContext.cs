@@ -1,7 +1,7 @@
 using ReportPortal.Shared.Reporter;
 using System.Collections.Generic;
 
-namespace RanorexReportPortalLogger
+namespace RanorexReportPortalLogging
 {
     class TestRunContext
     {
