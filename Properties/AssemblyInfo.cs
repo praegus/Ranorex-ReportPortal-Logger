@@ -5,10 +5,10 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("RanorexReportPortalLogger")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Ranorex ReportPortal Logger")]
+[assembly: AssemblyDescription("A logging library that reports Ranorex Test output to ReportPortal")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Praegus")]
 [assembly: AssemblyProduct("RanorexReportPortalLogger")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]

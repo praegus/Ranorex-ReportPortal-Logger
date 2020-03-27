@@ -63,7 +63,7 @@ namespace RanorexReportPortalLogging
             {
                 StartTime = DateTime.UtcNow,
                 Name = Environment.GetEnvironmentVariable("rp.launch")
-        });
+            });
         }
 
         public void End()
