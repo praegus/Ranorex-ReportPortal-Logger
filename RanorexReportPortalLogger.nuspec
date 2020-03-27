@@ -7,12 +7,13 @@
     <authors>$author$</authors>
     <owners>$author$</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <license type="expression">MIT</license>
-    <projectUrl>http://project_url_here_or_delete_this_line/</projectUrl>
-    <iconUrl>http://icon_url_here_or_delete_this_line/</iconUrl>
+    <license type="expression">Apache-2.0</license>
+    <projectUrl>https://github.com/praegus/Ranorex-ReportPortal-Logger</projectUrl>
     <description>$description$</description>
-    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
+    <releaseNotes>First version of this library</releaseNotes>
     <copyright>Copyright 2020</copyright>
-    <tags>Tag1 Tag2</tags>
+	<dependencies>
+      <group targetFramework=".NETFramework4.6.2" />
+    </dependencies>
   </metadata>
 </package>
