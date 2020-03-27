@@ -10,10 +10,14 @@
     <license type="expression">Apache-2.0</license>
     <projectUrl>https://github.com/praegus/Ranorex-ReportPortal-Logger</projectUrl>
     <description>$description$</description>
-    <releaseNotes>First version of this library</releaseNotes>
+    <releaseNotes>Added icon</releaseNotes>
     <copyright>Copyright 2020</copyright>
 	<dependencies>
       <group targetFramework=".NETFramework4.6.2" />
     </dependencies>
+	<icon>rp-rx.png</icon>
   </metadata>
+  <files>
+    <file src="rp-rx.png" target="" />
+  </files>
 </package>
