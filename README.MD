@@ -16,7 +16,7 @@ Currently supports text logs and image attachments.
 
 
 ## Usage:
- * Reference dll in your Ranorex project
+ * Reference dll in your Ranorex project (or just get the latest version from [nuget](https://www.nuget.org/packages/RanorexReportPortalLogger/#)
  * In Program.cs in ranorex Project, add before the call to TestSuiteRunner.Run();
  
 ```           
