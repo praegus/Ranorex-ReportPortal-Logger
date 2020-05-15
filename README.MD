@@ -29,4 +29,11 @@ RanorexReportPortalLogger rpLogger = new RanorexReportPortalLogger();
 Report.AttachLogger(rpLogger);
 ```
 
+## Changelog:
+
+1.0.0.0 - 	Initial version
+1.0.0.1 - 	Icon added
+1.0.0.2 - 	Log meta-info separately at DEBUG level to avoid clutter and improve readability
+			Log Ranorex' failure level as ERROR and Warnings as WARN
+
 ### Happy Testing!
