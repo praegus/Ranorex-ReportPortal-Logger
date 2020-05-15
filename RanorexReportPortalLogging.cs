@@ -116,7 +116,14 @@ namespace RanorexReportPortalLogging
             var level = DetermineLogLevel(logItem.Level.Name);
 
             SetOrCreateReporter(TestSuite.Current);
+            //report message
             _currentReporter.Log(CreateLogItemRequest(logItem, level));
+
+            //report meta-info if present
+            if (logItem.MetaInfo.Keys.Count > 0)
+            {
+                _currentReporter.Log(CreateMetaDataLogItemRequest(logItem, LogLevel.Debug));
+            }
 
             UpdateCurrentTestState(logItem.Level.Name);
         }
@@ -194,41 +201,48 @@ namespace RanorexReportPortalLogging
             LogLevel level;
             var logLevel = char.ToUpper(levelStr[0]) + levelStr.Substring(1);
             if (Enum.IsDefined(typeof(LogLevel), logLevel))
-                level = (LogLevel) Enum.Parse(typeof(LogLevel), logLevel);
+                level = (LogLevel)Enum.Parse(typeof(LogLevel), logLevel);
+            else if (logLevel.Equals("Failure"))
+                level = LogLevel.Error;
+            else if (logLevel.Equals("Warn"))
+                level = LogLevel.Warning;
             else
                 level = LogLevel.Info;
             return level;
         }
 
-        private static AddLogItemRequest CreateLogItemRequest(RanorexRpLogItem logItem, LogLevel level)
+        private AddLogItemRequest CreateLogItemRequest(RanorexRpLogItem logItem, LogLevel level)
         {
             var rq = new AddLogItemRequest();
             rq.Time = DateTime.UtcNow;
             rq.Level = level;
-            rq.Text = CombineLogDataToMessage(logItem);
-
+            rq.Text = logItem.Category + " - " + logItem.Message;
 
             if (logItem.AttachData != null) rq.Attach = new Attach("Attachment", "image/jpeg", logItem.AttachData);
             return rq;
         }
 
-        private static string CombineLogDataToMessage(RanorexRpLogItem logItem)
+        private AddLogItemRequest CreateMetaDataLogItemRequest(RanorexRpLogItem logItem, LogLevel level)
         {
-            var sb = new StringBuilder();
-            sb.Append(logItem.Category).Append(" - ")
-                .Append(logItem.Message)
-                .Append(" (").Append(logItem.Level.Name).Append(")");
 
-            if (logItem.MetaInfo.Keys.Count > 0)
-            {
-                sb.Append("\r\n\r\n")
-                    .Append("Meta Info:\r\n");
+            var rq = new AddLogItemRequest();
+            rq.Time = DateTime.UtcNow;
+            rq.Level = level;
+            rq.Text = ConstructMetaDataLogMessage(logItem);
+       
+            return rq;
+        }
 
-                foreach (var key in logItem.MetaInfo.Keys)
-                    sb.Append("\t").Append(key).Append(" => ").Append(logItem.MetaInfo[key]).Append("\r\n");
-            }
+        private string ConstructMetaDataLogMessage(RanorexRpLogItem logItem)
+        {
+            var meta = new StringBuilder();
+            meta.Append("\r\n\r\n")
+                .Append("Meta Info:\r\n");
 
-            return sb.ToString();
+            foreach (var key in logItem.MetaInfo.Keys)
+                meta.Append("\t").Append(key).Append(" => ").Append(logItem.MetaInfo[key]).Append("\r\n");
+
+            return meta.ToString();
         }
 
         private static byte[] ByteArrayForImage(Bitmap data)
