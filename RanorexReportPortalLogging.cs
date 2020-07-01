@@ -54,7 +54,7 @@ namespace RanorexReportPortalLogging
             _rpService = new Service(new Uri(rpEndpoint), rpProject, rpUuid);
         }
 
-        public bool PreFilterMessages => throw new NotImplementedException();
+        public bool PreFilterMessages => false;
 
         public void Start()
         {
