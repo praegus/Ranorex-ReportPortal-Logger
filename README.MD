@@ -38,5 +38,7 @@ Report.AttachLogger(rpLogger);
  - 1.0.0.2
     - Log meta-info separately at DEBUG level to avoid clutter and improve readability
     - Log Ranorex' failure level as ERROR and Warnings as WARN
+ - 1.0.0.3
+    - implement prefilter bool to return false instead of throwing an exception
 
 ### Happy Testing!
